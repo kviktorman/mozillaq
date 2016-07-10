@@ -27,6 +27,7 @@ CREATE TABLE `quizQuestions` (
   `idQuestion` int(11) NOT NULL AUTO_INCREMENT,
   `textQuestion` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
   `quizLanguage` varchar(4) NOT NULL,
+  `quizType` int(3) NOT NULL,
   PRIMARY KEY (`idQuestion`,`quizLanguage`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 

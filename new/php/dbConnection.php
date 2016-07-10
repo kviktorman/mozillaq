@@ -54,10 +54,10 @@
 
     /* Query statements */
 
-    function getLanguageFilteredQuestions($selectedLanguage){
+    function getFilteredQuestions($selectedLanguage,$quizType){
         global $conn;
 
-        $sql = "SELECT * FROM quizQuestions WHERE quizLanguage='".$selectedLanguage."';";
+        $sql = "SELECT * FROM quizQuestions WHERE quizLanguage='".$selectedLanguage."' AND quizType=".$quizType.";";
 
         $returnResult = array();
 

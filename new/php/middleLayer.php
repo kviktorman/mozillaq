@@ -10,8 +10,9 @@
         if($messageRequest['messageName'] == "getQuiz"){
 
             $language = $messageRequest['language'];
+            $quizType = $messageRequest['quizType'];
 
-            $returnArray = getLanguageFilteredQuestions($language);
+            $returnArray = getFilteredQuestions($language,$quizType);
             $responseArray = array();
 
             foreach($returnArray as $quizElement){

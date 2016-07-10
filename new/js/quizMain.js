@@ -3,7 +3,7 @@ function getQuestions() {
     var hostname = $(location).attr('hostname');
     //var url = 'http://' + hostname + "/server/api.php";
     var url = 'http://localhost/mozillaq-master/new/php/middleLayer.php';
-    var requestMessage = '{"messageName":"getQuiz","quiztype":' + $.urlParam("quiztype") + ',"language":"' + $.urlParam("language") + '"}';
+    var requestMessage = '{"messageName":"getQuiz","quizType":' + $.urlParam("quiztype") + ',"language":"' + $.urlParam("language") + '"}';
 
     var posting = $.post(url, requestMessage, null, "json");
     //var posting = $.post(url, requestMessage);
