@@ -37,6 +37,8 @@ function pageChange(page) {
     } else {
         var parts = page.split('-');
         location += "quizPage?quiztype=" + parts[1] + "&language=" + $.urlParam("language");
+        collections.quizQuestions = [];
+        angular.element($('#quizMainList')).scope().updateQuizList();
         $("#quizMenuPanel").panel("close");
     }
 
