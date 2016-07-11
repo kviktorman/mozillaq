@@ -1,0 +1,4 @@
+- evaluate the right answers and show the reached score
+- show selected answers and right answers in one page
+- virtual badge reuest (name & mail) 
+- store information to database (on page change)
