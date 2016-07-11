@@ -1,8 +1,22 @@
+function getHostStart() {
+
+    var protocol = $(location).attr('protocol');
+    var hostname = $(location).attr('hostname');
+    var path = $(location).attr('pathname');
+    path = path.split("/")
+    path.splice(path.length - 1, 1);
+    path = path.join("/");
+
+    var fullPath = protocol + "//" + hostname + path;
+
+    return fullPath;
+}
+
+
 function getQuestions() {
 
-    var hostname = $(location).attr('hostname');
-    //var url = 'http://' + hostname + "/server/api.php";
-    var url = 'http://localhost/mozillaq-master/new/php/middleLayer.php';
+    var url = getHostStart();
+    url += '/php/middleLayer.php';
     var requestMessage = '{"messageName":"getQuiz","quizType":' + $.urlParam("quiztype") + ',"language":"' + $.urlParam("language") + '"}';
 
     var posting = $.post(url, requestMessage, null, "json");
