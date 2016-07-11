@@ -2,3 +2,4 @@
 - one quiz question per page
 - the answers order should be different maybe question order as well
 - after quiz finish the result page should contain 2 columns 
+- color differentiation based on quiz difficulty

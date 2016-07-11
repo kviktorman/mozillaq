@@ -1,3 +1,7 @@
+Current limitations:
+- Single color set for every difficulty level.
+
+
 # Sprint for kicking-off this project
 
 Phase 1:
