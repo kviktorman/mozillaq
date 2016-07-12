@@ -23,6 +23,7 @@ function getQuestions() {
     //var posting = $.post(url, requestMessage);
     posting.done(function (data) {
         /*console.log(data);*/
+        collections.selectedQuiz = $.urlParam("quiztype");
         afterDateLoad(data);
     });
 
@@ -83,6 +84,7 @@ function populateQuizEvaluated() {
     collections.quizEvaluated = [];
 
     var resultElement;
+    var storeElement;
     collections.quizQuestions.forEach(function (entry, i) {
         resultElementEntry = {
             textQuestion: entry.textQuestion,
@@ -90,11 +92,16 @@ function populateQuizEvaluated() {
             resultElement: []
         };
         collections.quizEvaluated.push(resultElementEntry);
+
+        storeElement = {
+            idQuestion: entry.idQuestion,
+            marked: []
+        };
+        collections.sendResults.push(storeElement);
     });
 
     var selected;
     var idChecked;
-
 
     $('[data-role="controlgroup"] :checked').each(function () {
         idChecked = $(this).val();
@@ -110,12 +117,20 @@ function populateQuizEvaluated() {
                 entry.resultElement.push(selected);
             }
         });
+
+        collections.sendResults.forEach(function (entry, i) {
+            if (entry.idQuestion == idChecked[0]) {
+                storeElement = {
+                    idChoice: idChecked[1]
+                };
+                entry.marked.push(storeElement);
+            }
+        });
     });
 
 
     var mixedAnswers;
     var exists;
-    //var denyDupplicateAdding;
     collections.quizEvaluated.forEach(function (evaluatedQuiz, i) {
         denyDupplicateAdding = 0;
         mixedAnswers = [];
@@ -167,6 +182,51 @@ function populateQuizEvaluated() {
         // Both asyncs tasks are done
     }).promise();
 }
+
+/*function prepareAnswersForSend() {
+        .forEach(function (entry, i) {
+            if (entry.idQuestion == idChecked[0]) {
+                storeElement = {
+                    idChoice: idChecked[1]
+                };
+                entry.marked.push(storeElement);
+            }
+        });
+}*/
+
+function sendReslts() {
+
+    var url = getHostStart();
+    url += '/php/middleLayer.php';
+
+    var storeMessage = "";
+
+    storeMessage += '{';
+    storeMessage += '"messageName": "storeQuiz", ';
+    storeMessage += '"quizType": ' + collections.selectedQuiz + ', ';
+    name = $('#nameFull').val();
+    if (name == "") {
+        name = "Anonymous";
+    }
+    storeMessage += '"name": "' + name + '", ';
+    mail = $('#email').val();
+    if (mail == "") {
+        mail = "anonymous@anonymous.com";
+    }
+    storeMessage += '"email": "' + mail + '", ';
+    storeMessage += '"datetime": "' + moment().local().format("YYYY-MM-DD HH:mm:ss") + '", ';
+    storeMessage += '"reachedScore": ' + collections.reachedScore + ',';
+    storeMessage += '"answers":'
+    storeMessage += JSON.stringify(collections.sendResults);
+    storeMessage += '}';
+
+    /*var posting = $.post(url, storeMessage, null, "json");
+
+    posting.done(function (data) {
+        pageChange("2");
+    });*/
+}
+
 
 $.urlParam = function (name) {
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);

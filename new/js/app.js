@@ -1,8 +1,11 @@
 var collections = {
     quizQuestions: [],
     quizEvaluated: [],
+    sendResults:[],
     reachedScore: 0,
-    maxScore: 0
+    maxScore: 0,
+    selectedQuiz: 0,
+
 }
 
 $(document).on("pagechange", function (event) {
@@ -55,7 +58,8 @@ app.controller('quizAppController', ['$scope', function ($scope) {
     }
 
     $scope.sendInfo = function () {
-
+        alert(" Thank you ! ");
+        sendReslts();
     }
 }]);
 
