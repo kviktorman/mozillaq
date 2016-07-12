@@ -89,7 +89,7 @@
                     </div>
                 </ul>
                 <div align="center" ng-show='quizLoaded'>
-                    <a href="#anylink" class="ui-btn ui-icon-check ui-btn-icon-left ui-btn-inline ui-corner-all">Ok</a>
+                    <a onclick='pageChange("3");' class="ui-btn ui-icon-check ui-btn-icon-left ui-btn-inline ui-corner-all">Ok</a>
                 </div>
                 <div align="center" ng-hide='quizLoaded'>
                     <span> No quiz quetions please select different quiz type from the menu </span>
@@ -98,6 +98,17 @@
         </div>
         <div data-role="footer">
             <h2>Quiz Questions Footer</h2>
+        </div>
+    </div>
+
+
+    <div data-role="page" id="resultPage" data-title="Quiz Page">
+        <div data-role="header" id="pageone-headaer">
+            <h2>{{selectedQuizType}}</h2>
+        </div>
+
+        <div class="centerDiv" align='center'>
+            <span>This is the result page</span>
         </div>
     </div>
 

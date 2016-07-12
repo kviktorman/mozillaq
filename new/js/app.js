@@ -44,6 +44,8 @@ function pageChange(page) {
         location += "quizPage?language=" + $('#select-language').val();
     } else if (page == 2) {
         location += "selectLanguage";
+    } else if (page == 3) {
+        location += "resultPage";
     } else {
         var parts = page.split('-');
         location += "quizPage?quiztype=" + parts[1] + "&language=" + $.urlParam("language");
