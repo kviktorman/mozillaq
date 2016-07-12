@@ -20,9 +20,7 @@ function getQuestions() {
     var requestMessage = '{"messageName":"getQuiz","quizType":' + $.urlParam("quiztype") + ',"language":"' + $.urlParam("language") + '"}';
 
     var posting = $.post(url, requestMessage, null, "json");
-    //var posting = $.post(url, requestMessage);
     posting.done(function (data) {
-        /*console.log(data);*/
         collections.selectedQuiz = $.urlParam("quiztype");
         afterDateLoad(data);
     });
@@ -183,17 +181,6 @@ function populateQuizEvaluated() {
     }).promise();
 }
 
-/*function prepareAnswersForSend() {
-        .forEach(function (entry, i) {
-            if (entry.idQuestion == idChecked[0]) {
-                storeElement = {
-                    idChoice: idChecked[1]
-                };
-                entry.marked.push(storeElement);
-            }
-        });
-}*/
-
 function sendReslts() {
 
     var url = getHostStart();
@@ -214,17 +201,16 @@ function sendReslts() {
         mail = "anonymous@anonymous.com";
     }
     storeMessage += '"email": "' + mail + '", ';
-    storeMessage += '"datetime": "' + moment().local().format("YYYY-MM-DD HH:mm:ss") + '", ';
+    storeMessage += '"filldate": "' + moment().local().format("YYYY-MM-DD HH:mm:ss") + '", ';
     storeMessage += '"reachedScore": ' + collections.reachedScore + ',';
     storeMessage += '"answers":'
     storeMessage += JSON.stringify(collections.sendResults);
     storeMessage += '}';
 
-    /*var posting = $.post(url, storeMessage, null, "json");
-
+    var posting = $.post(url, storeMessage, null, "json");
     posting.done(function (data) {
         pageChange("2");
-    });*/
+    });
 }
 
 

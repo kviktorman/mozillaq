@@ -98,4 +98,30 @@
         }
         return $returnResult;
     }
+
+    function storeaAnswers($storeArray){
+        global $conn;
+
+        $sql = "SELECT COUNT(1) as rownumbers FROM resultHolder;";
+
+        foreach ($conn->query($sql) as $row)
+        {
+            $element  = $row['rownumbers'] +1;
+        }
+
+        $sql = "INSERT INTO `resultHolder` (`resultId`,`name`,`email`,`filldate`,`quizType`,`reachedScore`) ";
+        $sql = $sql."VALUES (".$element.",'".$storeArray['name']."','".$storeArray['email']."','";
+        $sql = $sql.$storeArray['filldate']."',".$storeArray['quizType'].",";
+        $sql = $sql.$storeArray['reachedScore'].");";
+
+        $conn->query($sql);
+
+        foreach($storeArray['answers'] as $qElement){
+            foreach($qElement['marked'] as $mElement){
+                $sql = "INSERT INTO `resultRawData` (`resultId`,`idQuestion`,`idChoice`) ";
+                $sql = $sql."VALUES (".$element.",'".$qElement['idQuestion']."',".$mElement['idChoice'].");";
+                $conn->query($sql);
+            }
+        }
+    }
 ?>

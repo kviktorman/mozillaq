@@ -28,7 +28,10 @@
             }
 
             $messageResponse = array(  "messageName" => "returnQuizQuestions", "quizQuestions" => $responseArray);
-        }else{
+        }elseif($messageRequest['messageName'] == "storeQuiz"){
+            storeaAnswers($messageRequest);
+        }
+        else{
             $messageResponse = array("status" => 2, "msg" => $messageRequest['messageName']);
         }
 

@@ -52,3 +52,24 @@ CREATE TABLE `rightAnswers` (
   PRIMARY KEY (`idQuestion`,`idChoice`),
   CONSTRAINT `fk_rightAnswers_1` FOREIGN KEY (`idQuestion`) REFERENCES `quizQuestions` (`idQuestion`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `resultHolder` (
+  `resultId` bigint(11) NOT NULL,
+  `name` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `email` text CHARACTER SET utf8 COLLATE utf8_bin NOT NULL,
+  `quizType` int(3) NOT NULL,
+  `filldate` datetime NOT NULL,
+  `reachedScore` int(5) NOT NULL,
+  PRIMARY KEY (`resultId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE `resultRawData` (
+  `resultId` bigint(11) NOT NULL,
+  `idQuestion` int(11) NOT NULL,
+  `idChoice` int(11) NOT NULL,
+  PRIMARY KEY (`resultId`,`idQuestion`,`idChoice`),
+  KEY `fk_resultRawData_2_idx` (`idQuestion`),
+  KEY `fk_resultRawData_3_idx` (`idChoice`),
+  CONSTRAINT `fk_resultRawData_1` FOREIGN KEY (`idQuestion`) REFERENCES `quizQuestions` (`idQuestion`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_resultRawData_2` FOREIGN KEY (`resultId`) REFERENCES `resultHolder` (`resultId`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
