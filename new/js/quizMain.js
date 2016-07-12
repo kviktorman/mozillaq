@@ -69,6 +69,98 @@ function visualizeQuestions() {
 
 }
 
+function populateQuizEvaluated() {
+    var notifier = $.Deferred();
+
+    collections.quizEvaluated = [];
+
+    var resultElement;
+    collections.quizQuestions.forEach(function (entry, i) {
+        resultElementEntry = {
+            textQuestion: entry.textQuestion,
+            idQuestion: entry.idQuestion,
+            resultElement: []
+        };
+        collections.quizEvaluated.push(resultElementEntry);
+    });
+
+    var selected;
+    var idChecked;
+
+
+    $('[data-role="controlgroup"] :checked').each(function () {
+        idChecked = $(this).val();
+        idChecked = idChecked.split("-");
+
+        collections.quizEvaluated.forEach(function (entry, i) {
+
+            if (entry.idQuestion == idChecked[0]) {
+                selected = {
+                    idResultAnswer: idChecked[1],
+                    selectionType: 0
+                };
+                entry.resultElement.push(selected);
+            }
+        });
+    });
+
+    var exists = 0;
+    var mixedAnswers;
+    collections.quizEvaluated.forEach(function (evaluatedQuiz, i) {
+
+        mixedAnswers = [];
+        collections.quizQuestions.forEach(function (mainQuiz) {
+
+            if (evaluatedQuiz.idQuestion == mainQuiz.idQuestion) {
+                mainQuiz.rightAnswers.forEach(function (rightA) {
+                    evaluatedQuiz.resultElement.forEach(function (selectedA, x) {
+                        selected = {
+                            idResultAnswer: selectedA.idResultAnswer,
+                            selectionType: 0
+                        };
+
+                        if (selectedA.idResultAnswer == rightA.idChoice) {
+                            exists = 1;
+                            selected.selectionType = 1;
+                            collections.reachedScore += rightA.score;
+                        }
+
+                        mixedAnswers.push(selected);
+                    });
+                    if (exists > 0) {
+                        exists = 0;
+
+                    } else {
+                        selected = {
+                            idResultAnswer: rightA.idChoice,
+                            selectionType: 1
+                        };
+                        mixedAnswers.push(selected);
+                    }
+                });
+                mixedAnswers.forEach(function (entry) {
+                    mainQuiz.selectChoices.forEach(function (entryTextOwner) {
+                        if (entry.idResultAnswer == entryTextOwner.idChoice) {
+                            entry.textResultAnswer = entryTextOwner.textChoice;
+                        }
+                    });
+                });
+            }
+        });
+
+        evaluatedQuiz.resultElement = mixedAnswers;
+
+        if (i == collections.quizEvaluated.length - 1) {
+            notifier.resolve();
+        }
+    });
+
+    //return $.when(dfrd1, dfrd2)
+    return $.when(notifier).done(function () {
+        // Both asyncs tasks are done
+    }).promise();
+}
+
 $.urlParam = function (name) {
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);
     if (results == null) {

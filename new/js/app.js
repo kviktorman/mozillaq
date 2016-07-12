@@ -1,5 +1,7 @@
 var collections = {
-    quizQuestions: []
+    quizQuestions: [],
+    quizEvaluated: [],
+    reachedScore: 0
 }
 
 $(document).on("pagechange", function (event) {
@@ -21,6 +23,8 @@ app.controller('quizAppController', ['$scope', function ($scope) {
     $scope.quizList = collections.quizQuestions;
     $scope.quizLoaded = 0;
     $scope.selectedQuizType = "";
+    $scope.resultQuizArray = collections.quizEvaluated;
+    $scope.reachedScore = collections.reachedScore;
 
     $scope.updateQuizList = function () {
         $scope.quizList = collections.quizQuestions;
@@ -35,6 +39,13 @@ app.controller('quizAppController', ['$scope', function ($scope) {
         $scope.$apply();
     };
 
+    $scope.evaluateResults = function () {
+        populateQuizEvaluated().done(function () {
+            $scope.resultQuizArray = collections.quizEvaluated;
+            $scope.reachedScore = collections.reachedScore;
+            pageChange("3");
+        });
+    }
 }]);
 
 function pageChange(page) {
