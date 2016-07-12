@@ -45,15 +45,17 @@
     <div data-role="page" id="quizPage" data-title="Quiz Page">
         <div data-role="panel" id="quizMenuPanel">
             <ul data-role="listview" data-inset="true">
-                <li><a onclick='pageChange("1-1");'>Quiz 1</a></li>
-                <li><a onclick='pageChange("1-2");'>Quiz 2</a></li>
-                <li><a onclick='pageChange("1-3");'>Quiz 3</a></li>
+                <li><a onclick='pageChange("1-1");' id='menu-1'>Quiz 1</a></li>
+                <li><a onclick='pageChange("1-2");' id='menu-2'>Quiz 2</a></li>
+                <li><a onclick='pageChange("1-3");' id='menu-3'>Quiz 3</a></li>
                 <li><a onclick='pageChange("2");'>Language</a></li>
             </ul>
         </div>
         <div data-role="header" id="pageone-headaer">
             <a href="#quizMenuPanel" class="ui-btn ui-btn-inline ui-corner-all ui-shadow ui-icon-bars ui-btn-icon-left ui-btn-icon-notext">Open Panel</a>
-            <h2>&nbsp;</h2>
+            <h2 ng-show='quizLoaded'>{{selectedQuizType}}</h2>
+            <h2 ng-hide='quizLoaded'>&nbsp;</h2>
+
         </div>
         <div data-role="main" class="ui-content">
             <div id="quizMainList">
@@ -86,6 +88,12 @@
                         </li>
                     </div>
                 </ul>
+                <div align="center" ng-show='quizLoaded'>
+                    <a href="#anylink" class="ui-btn ui-icon-check ui-btn-icon-left ui-btn-inline ui-corner-all">Ok</a>
+                </div>
+                <div align="center" ng-hide='quizLoaded'>
+                    <span> No quiz quetions please select different quiz type from the menu </span>
+                </div>
             </div>
         </div>
         <div data-role="footer">

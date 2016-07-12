@@ -19,9 +19,19 @@ var app = angular.module('QuizApp', []);
 
 app.controller('quizAppController', ['$scope', function ($scope) {
     $scope.quizList = collections.quizQuestions;
+    $scope.quizLoaded = 0;
+    $scope.selectedQuizType = "";
 
     $scope.updateQuizList = function () {
         $scope.quizList = collections.quizQuestions;
+        if ($scope.quizList.length > 0) {
+            $scope.quizLoaded = 1;
+            $scope.selectedQuizType = $("#menu-" + $.urlParam("quiztype")).html();
+
+        } else {
+            $scope.quizLoaded = 0;
+            $scope.selectedQuizType = "";
+        }
         $scope.$apply();
     };
 
