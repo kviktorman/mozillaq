@@ -104,36 +104,35 @@ function populateQuizEvaluated() {
         });
     });
 
-    var exists = 0;
-    var mixedAnswers;
-    collections.quizEvaluated.forEach(function (evaluatedQuiz, i) {
 
+    var mixedAnswers;
+    var exists;
+    //var denyDupplicateAdding;
+    collections.quizEvaluated.forEach(function (evaluatedQuiz, i) {
+        denyDupplicateAdding = 0;
         mixedAnswers = [];
         collections.quizQuestions.forEach(function (mainQuiz) {
 
             if (evaluatedQuiz.idQuestion == mainQuiz.idQuestion) {
                 mainQuiz.rightAnswers.forEach(function (rightA) {
-                    evaluatedQuiz.resultElement.forEach(function (selectedA, x) {
-                        selected = {
-                            idResultAnswer: selectedA.idResultAnswer,
-                            selectionType: 0
-                        };
-
-                        if (selectedA.idResultAnswer == rightA.idChoice) {
+                    selected = {
+                        idResultAnswer: rightA.idChoice,
+                        selectionType: 1
+                    };
+                    mixedAnswers.push(selected);
+                });
+                evaluatedQuiz.resultElement.forEach(function (markedA) {
+                    exists = 0;
+                    mainQuiz.rightAnswers.forEach(function (rightA) {
+                        if (markedA.idResultAnswer == rightA.idChoice) {
                             exists = 1;
-                            selected.selectionType = 1;
                             collections.reachedScore += rightA.score;
                         }
-
-                        mixedAnswers.push(selected);
                     });
-                    if (exists > 0) {
-                        exists = 0;
-
-                    } else {
+                    if (exists < 1) {
                         selected = {
-                            idResultAnswer: rightA.idChoice,
-                            selectionType: 1
+                            idResultAnswer: markedA.idResultAnswer,
+                            selectionType: 0
                         };
                         mixedAnswers.push(selected);
                     }
