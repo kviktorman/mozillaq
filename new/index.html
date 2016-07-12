@@ -133,7 +133,18 @@
         </div>
 
         <div class="centerDiv" align='center'>
-            <span>This is the result page</span>
+            <label for="eBadge">E - Badge</label>
+            <input name="eBadge" id="eBadge" ng-model='eBadgeRequest' type="checkbox">
+            <form ng-show="eBadgeRequest">
+                <div class="ui-field-contain">
+                    <label for="nameFull">Name:</label>
+                    <input type="text" name="nameFull" id="nameFull" placeholder="Name ...">
+                    <br/>
+                    <br/>
+                    <label for="email">E-mail:</label>
+                    <input type="email" name="email" id="email" placeholder="Email...">
+                </div>
+            </form>
         </div>
     </div>
 

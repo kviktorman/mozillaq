@@ -25,6 +25,7 @@ app.controller('quizAppController', ['$scope', function ($scope) {
     $scope.selectedQuizType = "";
     $scope.resultQuizArray = collections.quizEvaluated;
     $scope.reachedScore = collections.reachedScore;
+    $scope.eBadgeRequest = 0;
 
     $scope.updateQuizList = function () {
         $scope.quizList = collections.quizQuestions;
