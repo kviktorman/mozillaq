@@ -12,11 +12,16 @@ This allows you to keep your Database connection settings in a place which is no
 For example: 
 $config_file = "/var/www/html/mozillaq-master/new/php/mysql.login";
 
-Example content for the "mysql.login" configuration file:
+Example content for the "mysql.login" configuration file under "/new/php/mysql.login".
+
+Example:
 
 servername=localhost
+
 username=mozilla
+
 password=123456
+
 databasename=mozillaQuiz
 
 #################################
