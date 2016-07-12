@@ -47,6 +47,10 @@ app.controller('quizAppController', ['$scope', function ($scope) {
             pageChange("3");
         });
     }
+
+    $scope.sendInfo = function () {
+
+    }
 }]);
 
 function pageChange(page) {
