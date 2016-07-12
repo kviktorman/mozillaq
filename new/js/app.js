@@ -1,7 +1,8 @@
 var collections = {
     quizQuestions: [],
     quizEvaluated: [],
-    reachedScore: 0
+    reachedScore: 0,
+    maxScore: 0
 }
 
 $(document).on("pagechange", function (event) {
@@ -25,7 +26,9 @@ app.controller('quizAppController', ['$scope', function ($scope) {
     $scope.selectedQuizType = "";
     $scope.resultQuizArray = collections.quizEvaluated;
     $scope.reachedScore = collections.reachedScore;
+    $scope.maxScore = collections.maxScore;
     $scope.eBadgeRequest = 0;
+    $scope.precentageScore = 0;
 
     $scope.updateQuizList = function () {
         $scope.quizList = collections.quizQuestions;
@@ -44,6 +47,9 @@ app.controller('quizAppController', ['$scope', function ($scope) {
         populateQuizEvaluated().done(function () {
             $scope.resultQuizArray = collections.quizEvaluated;
             $scope.reachedScore = collections.reachedScore;
+            $scope.maxScore = collections.maxScore;
+            var precentage = $scope.reachedScore / $scope.maxScore;
+            $scope.precentageScore = precentage.toFixed(4) * 100;
             pageChange("3");
         });
     }

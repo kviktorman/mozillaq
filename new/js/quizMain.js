@@ -48,7 +48,15 @@ function populateQuestions(inArray) {
             questionElement.multiSelect = 1;
         }
 
+        entry.rightAnswers.forEach(function (rightA) {
+            rightA.score = parseInt(rightA.score);
+        });
+
         collections.quizQuestions.push(questionElement);
+
+        entry.rightAnswers.forEach(function (rightA) {
+            collections.maxScore += rightA.score;
+        });
 
         if (inArray.quizQuestions.length - 1 == i) {
             notifier.resolve();
