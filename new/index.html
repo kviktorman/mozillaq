@@ -107,6 +107,34 @@
             <h2>{{selectedQuizType}}</h2>
         </div>
 
+        <div data-role="main" class="ui-content">
+            <div id='quizResultContainer'>
+                <ul class="ui-listview ui-corner-all" data-role="listview" data-inset="true" style="white-space: normal !important;" id="quizListView">
+                    <div ng-repeat='x in quizList'>
+                        <li class="ui-li" data-theme="c" data-wrapperels="div" data-shadow="false" data-corners="false">
+                            <div class="ui-btn-inner ui-li" style='padding-top:5px;padding-bottom:5px;'>
+                                <h2 class="ui-li-heading" style='padding-left:15px;padding-right: 15px;white-space: normal !important;'>{{x.textQuestion}}</h2>
+                                <div style='padding-right: 15px;padding-left:15px;white-space: normal !important;'>
+                                    <fieldset data-role="controlgroup" id='controlgroup-radio-{{x.idQuestion}}'>
+                                        <div class='ui-corner-all' ng-repeat='y in x.selectChoices'>
+                                            <div class="ui-btn ui-icon-check ui-btn-icon-left">{{y.textChoice}}</div>
+                                            <div class="ui-btn ui-icon-delete ui-btn-icon-left">{{y.textChoice}}</div>
+                                        </div>
+                                    </fieldset>
+                                </div>
+                            </div>
+
+                            <div style='padding-right: 15px;padding-left:15px;white-space: normal !important;'>
+                                <div style='border-style: solid;border-top: #ff0000;' ng-hide='{{{true: 1, false: 0}[$last]}}'>
+                                </div>
+                            </div>
+
+                        </li>
+                    </div>
+                </ul>
+            </div>
+        </div>
+
         <div class="centerDiv" align='center'>
             <span>This is the result page</span>
         </div>
