@@ -23,3 +23,7 @@ app.js => function pageChange
     }
 
 This can be removed after issue fix
+
+#issue 1
+Caracter encoding at db store.
+GÃ©za bÃ©la bÃ¡rmi => Géza béla bármi
