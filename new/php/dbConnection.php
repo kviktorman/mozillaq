@@ -40,6 +40,11 @@
 
             // set the PDO error mode to exception
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+            //UTF8 caracter set fix
+            $sql = "SET NAMES utf8";
+            $conn->query($sql);
+
         }
         catch(PDOException $e)
         {
