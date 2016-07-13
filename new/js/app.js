@@ -67,8 +67,10 @@ function pageChange(page) {
     if (page == 1) {
         //language selected only
         location += "quizPage?language=" + $('#select-language').val();
+        angular.element($('#quizMainList')).scope().updateQuizList();
     } else if (page == 2) {
         location += "selectLanguage";
+        collections.quizQuestions = [];
     } else if (page == 3) {
         location += "resultPage";
     } else {
