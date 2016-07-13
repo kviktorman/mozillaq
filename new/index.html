@@ -114,12 +114,12 @@
                 <ul class="ui-listview ui-corner-all" data-role="listview" data-inset="true" style="white-space: normal !important;" id="quizListView">
                     <div ng-repeat='x in resultQuizArray'>
                         <li class="ui-li" data-theme="c" data-wrapperels="div" data-shadow="false" data-corners="false">
-                            <div class="ui-btn-inner ui-li" style='padding-top:5px;padding-bottom:5px;'>
+                            <div class="ui-btn-inner ui-li" style='padding-top:5px;padding-bottom:5px;white-space: normal !important;'>
                                 <h2 class="ui-li-heading" style='padding-left:15px;padding-right: 15px;white-space: normal !important;'>{{x.textQuestion}}</h2>
                                 <div style='padding-right: 15px;padding-left:15px;white-space: normal !important;'>
                                     <div class='ui-corner-all' ng-repeat='y in x.resultElement'>
-                                        <div class="ui-btn ui-icon-check ui-btn-icon-left" ng-show='y.selectionType'>{{y.textResultAnswer}}</div>
-                                        <div class="ui-btn ui-icon-delete ui-btn-icon-left" ng-hide='y.selectionType'>{{y.textResultAnswer}}</div>
+                                        <div class="ui-btn ui-icon-check ui-btn-icon-left" ng-show='y.selectionType' style='white-space: normal !important;'>{{y.textResultAnswer}}</div>
+                                        <div class="ui-btn ui-icon-delete ui-btn-icon-left" ng-hide='y.selectionType' style='white-space: normal !important;'>{{y.textResultAnswer}}</div>
                                     </div>
                                 </div>
                             </div>
