@@ -8,6 +8,15 @@ var collections = {
 
 }
 
+$(window).on("navigate", function (event, data) {
+    var direction = data.state.direction;
+    if (direction == 'back') {
+        location.reload();
+    }
+    if (direction == 'forward') {}
+});
+
+
 $(document).on("pagechange", function (event) {
 
     var loadedPage = $.mobile.pageContainer.pagecontainer("getActivePage");
