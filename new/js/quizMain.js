@@ -192,12 +192,12 @@ function sendReslts() {
     storeMessage += '"messageName": "storeQuiz", ';
     storeMessage += '"quizType": ' + collections.selectedQuiz + ', ';
     name = $('#nameFull').val();
-    if (name == "") {
+    if (name.trim() == "") {
         name = "Anonymous";
     }
     storeMessage += '"name": "' + name + '", ';
     mail = $('#email').val();
-    if (mail == "") {
+    if (mail.trim() == "") {
         mail = "anonymous@anonymous.com";
     }
     storeMessage += '"email": "' + mail + '", ';
