@@ -73,3 +73,17 @@ CREATE TABLE `resultRawData` (
   CONSTRAINT `fk_resultRawData_1` FOREIGN KEY (`idQuestion`) REFERENCES `quizQuestions` (`idQuestion`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_resultRawData_2` FOREIGN KEY (`resultId`) REFERENCES `resultHolder` (`resultId`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+########################
+#> clear result table <#
+########################
+
+
+SET SQL_SAFE_UPDATES = 0;
+
+delete from resultRawData;
+
+delete from resultHolder;
+
+SET SQL_SAFE_UPDATES = 1;

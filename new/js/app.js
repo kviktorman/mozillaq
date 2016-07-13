@@ -62,7 +62,11 @@ app.controller('quizAppController', ['$scope', function ($scope) {
             $scope.maxScore = collections.maxScore;
             var precentage = $scope.reachedScore / $scope.maxScore;
             $scope.precentageScore = precentage.toFixed(4) * 100;
+            $('#nameFull').val("");
+            $('#email').val("");
+
             pageChange("3");
+
         });
     }
 

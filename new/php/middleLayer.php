@@ -30,13 +30,14 @@
             $messageResponse = array(  "messageName" => "returnQuizQuestions", "quizQuestions" => $responseArray);
         }elseif($messageRequest['messageName'] == "storeQuiz"){
             storeaAnswers($messageRequest);
+            $messageResponse = array("status" => 0, "msg" => "Changes done");
         }
         else{
             $messageResponse = array("status" => 2, "msg" => $messageRequest['messageName']);
         }
 
     }else{
-        $messageResponse = array("status" => 0, "msg" => "Request method not accepted only POST messages are accepted!");
+        $messageResponse = array("status" => -1, "msg" => "Request method not accepted only POST messages are accepted!");
     }
 
     /* Output header */

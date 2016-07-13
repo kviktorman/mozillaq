@@ -24,6 +24,9 @@ function getQuestions() {
         collections.selectedQuiz = $.urlParam("quiztype");
         afterDateLoad(data);
     });
+    posting.fail(function () {
+        alert("Sorry. Server unavailable. ");
+    });
 
 }
 
@@ -215,10 +218,14 @@ function sendReslts() {
         alert('No quiz answers !');
         pageChange("2");
     }
+
     var posting = $.post(url, storeMessage, null, "json");
     posting.done(function (data) {
         alert(" Thank you ! ");
         pageChange("2");
+    });
+    posting.fail(function () {
+        alert("Sorry. Server unavailable. ");
     });
 }
 
