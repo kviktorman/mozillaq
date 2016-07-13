@@ -97,6 +97,6 @@ function pageChange(page) {
     window.location.href = location;
 
     if (page == 2) {
-        window.location.reload();
+        //   window.location.reload();
     }
 }
