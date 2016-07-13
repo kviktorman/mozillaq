@@ -5,6 +5,7 @@ Requirements:
 - PHP
 - PHP - MySQL conncetor
 - Web Server (advised: Apache2)
+- create the database tables 
 
 Currently supported language selection for quizlanguages 'en','de','hu'.
 At front-end side this can be expand here. In database this is matching with the quizLanguage field.
@@ -29,3 +30,5 @@ index.html
     </ul>
 
 In this version quiz question should be inserted manually into the database.
+
+
