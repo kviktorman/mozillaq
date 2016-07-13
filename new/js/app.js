@@ -1,7 +1,7 @@
 var collections = {
     quizQuestions: [],
     quizEvaluated: [],
-    sendResults:[],
+    sendResults: [],
     reachedScore: 0,
     maxScore: 0,
     selectedQuiz: 0,
@@ -58,7 +58,6 @@ app.controller('quizAppController', ['$scope', function ($scope) {
     }
 
     $scope.sendInfo = function () {
-        alert(" Thank you ! ");
         sendReslts();
     }
 }]);

@@ -204,20 +204,32 @@ function sendReslts() {
     storeMessage += '"filldate": "' + moment().local().format("YYYY-MM-DD HH:mm:ss") + '", ';
     storeMessage += '"reachedScore": ' + collections.reachedScore + ',';
     storeMessage += '"answers":'
+
+    cleanEmptyAnswers();
+
     var storeArray = JSON.stringify(collections.sendResults);
     storeMessage += storeArray;
     storeMessage += '}';
 
-    console.log(storeArray);
     if (storeArray == "[]") {
-        alert('No quiz answers');
+        alert('No quiz answers !');
         pageChange("2");
     }
-
-    /*var posting = $.post(url, storeMessage, null, "json");
+    var posting = $.post(url, storeMessage, null, "json");
     posting.done(function (data) {
+        alert(" Thank you ! ");
         pageChange("2");
-    });*/
+    });
+}
+
+function cleanEmptyAnswers() {
+    var tempArray = [];
+    collections.sendResults.forEach(function (entry) {
+        if (entry.marked.length > 0) {
+            tempArray.push(entry);
+        }
+    });
+    collections.sendResults = tempArray;
 }
 
 
