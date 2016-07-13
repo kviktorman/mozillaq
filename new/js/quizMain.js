@@ -82,6 +82,7 @@ function populateQuizEvaluated() {
     var notifier = $.Deferred();
 
     collections.quizEvaluated = [];
+    collections.sendResults = [];
 
     var resultElement;
     var storeElement;
