@@ -64,6 +64,12 @@ app.controller('quizAppController', ['$scope', function ($scope) {
             $scope.precentageScore = precentage.toFixed(4) * 100;
             $('#nameFull').val("");
             $('#email').val("");
+            $('#eBadge').trigger('create').checkboxradio();
+            if ($scope.eBadgeRequest != 0) {
+                $scope.eBadgeRequest = 0;
+                $('#eBadge').attr('checked', false);
+                $('#eBadge').checkboxradio('refresh');
+            }
 
             pageChange("3");
 
