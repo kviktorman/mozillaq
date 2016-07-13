@@ -1,3 +1,5 @@
+The restructured application location is under the new folder.
+
 Requirements:
 - MySQL 
 - PHP
