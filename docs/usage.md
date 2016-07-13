@@ -1,3 +1,9 @@
+Requirements:
+- MySQL 
+- PHP
+- PHP - MySQL conncetor
+- Web Server (advised: Apache2)
+
 Currently supported language selection for quizlanguages 'en','de','hu'.
 At front-end side this can be expand here. In database this is matching with the quizLanguage field.
 
@@ -20,3 +26,4 @@ index.html
         <li><a onclick='pageChange("2");'>Language</a></li>
     </ul>
 
+In this version quiz question should be inserted manually into the database.
