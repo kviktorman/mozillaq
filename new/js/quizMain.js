@@ -12,7 +12,6 @@ function getHostStart() {
     return fullPath;
 }
 
-
 function getQuestions() {
 
     var url = getHostStart();
@@ -90,7 +89,9 @@ function populateQuizEvaluated() {
         resultElementEntry = {
             textQuestion: entry.textQuestion,
             idQuestion: entry.idQuestion,
-            resultElement: []
+            resultElement: [],
+            maxQuestionScore: 0,
+            reachedQuestionScore: 0
         };
         collections.quizEvaluated.push(resultElementEntry);
 
@@ -144,6 +145,7 @@ function populateQuizEvaluated() {
                         selectionType: 1
                     };
                     mixedAnswers.push(selected);
+                    evaluatedQuiz.maxQuestionScore += 1;
                 });
                 evaluatedQuiz.resultElement.forEach(function (markedA) {
                     exists = 0;
@@ -151,6 +153,7 @@ function populateQuizEvaluated() {
                         if (markedA.idResultAnswer == rightA.idChoice) {
                             exists = 1;
                             collections.reachedScore += rightA.score;
+                            evaluatedQuiz.reachedQuestionScore += 1;
                         }
                     });
                     if (exists < 1) {
@@ -238,7 +241,6 @@ function cleanEmptyAnswers() {
     });
     collections.sendResults = tempArray;
 }
-
 
 $.urlParam = function (name) {
     var results = new RegExp('[\?&]' + name + '=([^&#]*)').exec(window.location.href);

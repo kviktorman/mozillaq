@@ -3,7 +3,7 @@ quizMain.js => function sendReslts()
 
 done function not triggered after first trigger.
 
-Somehow $post changes the "application/json" to "text/html; charset=UTF-8". It's weird, because the other post message is not doing it. 
+Somehow $post changes the "application/json" to "text/html; charset=UTF-8". It's weird, because the other post message are not doing it. 
 
     var posting = $.post(url, storeMessage, null, "json");
     posting.done(function (data) {
@@ -21,3 +21,5 @@ app.js => function pageChange
    if (page == 2) {
            window.location.reload();
     }
+
+This can be removed after issue fix
