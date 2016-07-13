@@ -10,6 +10,7 @@
     <!-- jQuery Mobile CSS library -->
     <link rel="stylesheet" href="css/jmobile.min.css" />
     <link rel="stylesheet" href="css/quizMain.css" />
+    <link rel="stylesheet" href="css/customTheme/hutyutyu.min.css" />
 
     <!-- JS libraries & scripts -->
     <script src="js/jquery-1.11.3.min.js"></script>
@@ -28,7 +29,7 @@
     <script type="text/javascript" src="js/app.js"></script>
 
 
-    <div data-role="page" id="selectLanguage" data-title="Quiz Page">
+    <div data-role="page" id="selectLanguage" data-title="Quiz Page" data-theme="a">
         <form>
             <div class="centerDiv" align='center'>
                 <div class="ui-field-contain" style='text-align: center;'>
@@ -43,7 +44,7 @@
         </form>
     </div>
 
-    <div data-role="page" id="quizPage" data-title="Quiz Page">
+    <div data-role="page" id="quizPage" data-title="Quiz Page" data-theme="a">
         <div data-role="panel" id="quizMenuPanel">
             <ul data-role="listview" data-inset="true">
                 <li><a onclick='pageChange("1-1");' id='menu-1'>Quiz 1</a></li>
@@ -97,13 +98,10 @@
                 </div>
             </div>
         </div>
-        <div data-role="footer">
-            <h2>Quiz Questions Footer</h2>
-        </div>
     </div>
 
 
-    <div data-role="page" id="resultPage" data-title="Quiz Page">
+    <div data-role="page" id="resultPage" data-title="Quiz Page" data-theme="a">
         <div data-role="header" id="pageone-headaer">
             <h2>{{selectedQuizType}}</h2>
         </div>
