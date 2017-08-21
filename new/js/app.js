@@ -67,7 +67,7 @@ app.controller('quizAppController', ['$scope', function ($scope) {
             $('#eBadge').trigger('create').checkboxradio();
             if ($scope.eBadgeRequest != 0) {
                 $scope.eBadgeRequest = 0;
-                $('#eBadge').attr('checked', false);
+                $('#eBadge').prop('checked', false);
                 $('#eBadge').checkboxradio('refresh');
             }
 
